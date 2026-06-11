@@ -10,7 +10,7 @@ const app = express();
 app.use(express.static("./public"));
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://postify-insta.vercel.app"],
     credentials: true,
   }),
 );
