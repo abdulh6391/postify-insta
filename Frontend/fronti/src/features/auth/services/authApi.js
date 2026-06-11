@@ -1,7 +1,17 @@
 import axios from "axios";
+const getBaseURL = () => {
+  if (
+    typeof import.meta !== "undefined" &&
+    import.meta.env &&
+    import.meta.env.VITE_API_BASE_URL
+  ) {
+    return import.meta.env.VITE_API_BASE_URL;
+  }
+  return "http://localhost:3000/api";
+};
+
 const api = axios.create({
-  // Yahan bhi wahi dynamic variable use karein
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api",
+  baseURL: getBaseURL(),
   withCredentials: true,
 });
 
