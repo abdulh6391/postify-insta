@@ -2,14 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.js",
+      "src": "Backend/server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "Frontend/fronti/package.json",
+      "use": "@vercel/vite"
     }
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "Backend/server.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "server.js"
+      "dest": "Frontend/fronti/$1"
     }
   ]
 }
